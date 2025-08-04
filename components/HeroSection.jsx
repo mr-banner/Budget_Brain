@@ -29,10 +29,10 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <div
         className={cn(
-          "absolute inset-2",
+          "absolute inset-0",
           "[background-size:20px_20px]",
           "[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]",
           "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]",
@@ -60,7 +60,7 @@ const HeroSection = () => {
               </Button>
             </Link>
           </div>
-          <div className="hero-image-wrapper">
+          <div className="hero-image-wrapper ">
             <div ref={refImage} className="hero-image">
               <Image
                 src={"/banner.jpeg"}

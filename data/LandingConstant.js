@@ -7,7 +7,6 @@ import {
   Zap,
 } from "lucide-react";
 
-// Stats Data
 export const statsData = [
   {
     value: "50K+",
@@ -29,62 +28,59 @@ export const statsData = [
 
 export const featuresData = [
   {
-    icon: <BarChart3 className="h-8 w-8 text-blue-600" />,
+    icon: <BarChart3 className="h-8 w-8 text-primary" />,
     title: "Advanced Analytics",
     description:
       "Get detailed insights into your spending patterns with AI-powered analytics",
   },
   {
-    icon: <Receipt className="h-8 w-8 text-blue-600" />,
+    icon: <Receipt className="h-8 w-8 text-primary" />,
     title: "Smart Receipt Scanner",
     description:
       "Extract data automatically from receipts using advanced AI technology",
   },
   {
-    icon: <PieChart className="h-8 w-8 text-blue-600" />,
+    icon: <PieChart className="h-8 w-8 text-primary" />,
     title: "Budget Planning",
     description: "Create and manage budgets with intelligent recommendations",
   },
   {
-    icon: <CreditCard className="h-8 w-8 text-blue-600" />,
+    icon: <CreditCard className="h-8 w-8 text-primary" />,
     title: "Multi-Account Support",
     description: "Manage multiple accounts and credit cards in one place",
   },
   {
-    icon: <Globe className="h-8 w-8 text-blue-600" />,
+    icon: <Globe className="h-8 w-8 text-primary" />,
     title: "Multi-Currency",
     description: "Support for multiple currencies with real-time conversion",
   },
   {
-    icon: <Zap className="h-8 w-8 text-blue-600" />,
+    icon: <Zap className="h-8 w-8 text-primary" />,
     title: "Automated Insights",
     description: "Get automated financial insights and recommendations",
   },
 ];
 
-// How It Works Data
 export const howItWorksData = [
   {
-    icon: <CreditCard className="h-8 w-8 text-blue-600" />,
+    icon: <CreditCard className="h-8 w-8 text-white" />,
     title: "1. Create Your Account",
     description:
       "Get started in minutes with our simple and secure sign-up process",
   },
   {
-    icon: <BarChart3 className="h-8 w-8 text-blue-600" />,
+    icon: <BarChart3 className="h-8 w-8 text-white" />,
     title: "2. Track Your Spending",
     description:
       "Automatically categorize and track your transactions in real-time",
   },
   {
-    icon: <PieChart className="h-8 w-8 text-blue-600" />,
+    icon: <PieChart className="h-8 w-8 text-white" />,
     title: "3. Get Insights",
     description:
       "Receive AI-powered insights and recommendations to optimize your finances",
   },
 ];
-
-// Testimonials Data
 export const testimonialsData = [
   {
     name: "Sarah Johnson",

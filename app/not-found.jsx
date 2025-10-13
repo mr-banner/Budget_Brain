@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import React from 'react'
 
-const notFound = () => {
+const NotFound = () => {
   return (
     <div className='flex flex-col items-center justify-center min-h-[100vh] text-center'>
         <h1 className='text-8xl font-extrabold gradiant-title'>404</h1>
@@ -15,4 +15,4 @@ const notFound = () => {
   )
 }
 
-export default notFound
+export default NotFound

@@ -1,41 +1,44 @@
-import { createMiddleware } from "@arcjet/next";
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import arcjet, { detectBot, shield } from "arcjet";
 
-const isProtectedRoutes = createRouteMatcher([
+// Protect these routes with Clerk
+const isProtectedRoute = createRouteMatcher([
   "/dashboard(.*)",
   "/account(.*)",
   "/transaction(.*)",
 ]);
 
-const aj = arcjet({
-  log: console,
-  client: {
-    key: process.env.ARCJET_API_KEY,
-  },
-  rules: [
-    shield({
-      mode: "LIVE",
-    }),
-    detectBot({
-      mode: "LIVE",
-      allow: ["CATEGORY:SEARCH_ENGINE", "GO_HTTP"],
-    }),
-  ],
-});
+export default clerkMiddleware(async (auth, req) => {
+  const { default: arcjet, detectBot, shield } = await import("arcjet");
+  const aj = arcjet({
+    client:{
+      key: process.env.ARCJET_API_KEY,
+    },
+    log: console,
+    rules: [
+      shield({ mode: "LIVE" }),
+      detectBot({
+        mode: "LIVE",
+        allow: ["CATEGORY:SEARCH_ENGINE", "GO_HTTP"],
+      }),
+    ],
+  });
 
-const clerk = clerkMiddleware(async (auth, req) => {
+  const decision = await aj.protect(req);
+  if (!decision.isAllowed) {
+    return new Response("Bot or suspicious request detected", { status: 403 });
+  }
+
   const { userId, redirectToSignIn } = await auth();
-
-  if (!userId && isProtectedRoutes(req)) {
+  if (!userId && isProtectedRoute(req)) {
     return redirectToSignIn();
   }
-});
 
-export default createMiddleware(aj, clerk);
+  return;
+});
 
 export const config = {
   matcher: [
+    // Apply to everything except static files and Next internals
     "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
     "/(api|trpc)(.*)",
   ],

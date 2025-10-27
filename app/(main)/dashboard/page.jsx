@@ -1,11 +1,12 @@
-import { getUserAccounts } from "@/actions/dashboard";
+import { getDashBoardData, getUserAccounts } from "@/actions/dashboard";
 import CreateAccountDrawer from "@/components/create-account-drawer";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Plus } from "lucide-react";
-import React from "react";
+import React, { Suspense } from "react";
 import AccountCard from "./_components/account-card";
 import { getCurrentBudget } from "@/actions/budget";
 import { BudgetProgress } from "./_components/budget-progress";
+import DashBoardOverview from "./_components/dashboard-overview";
 
 export default async function DashBoardPage() {
   const accounts = await getUserAccounts();
@@ -15,6 +16,8 @@ export default async function DashBoardPage() {
   if (defaultAccount) {
     budgetData = await getCurrentBudget(defaultAccount.id);
   }
+
+  const transactions = await getDashBoardData()
 
   return (
     <div className="space-y-8">
@@ -26,6 +29,13 @@ export default async function DashBoardPage() {
         />
       )}
       {/* overview */}
+      <Suspense fallback={<div>Loading overview...</div>}>
+        <DashBoardOverview 
+        accounts={accounts}
+        transactions={transactions || []}
+        />
+      </Suspense>
+
       {/* account grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <CreateAccountDrawer>
@@ -34,7 +44,8 @@ export default async function DashBoardPage() {
              hover:bg-[#efecff]/100
              hover:shadow-2xl
              hover:backdrop-blur-md
-             hover:border hover:border-white/10"
+             hover:border hover:border-white/10 shadow-2xl shadow-slate-300"
+             
           >
             <CardContent className="flex flex-col justify-center items-center h-full text-muted-foreground">
               <Plus className="h-10 w-10 mb-2.5" />

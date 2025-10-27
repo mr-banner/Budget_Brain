@@ -50,6 +50,7 @@ const AccountCard = ({ account }) => {
              transition-all duration-500
              hover:bg-[#efecff]/100
              hover:shadow-2xl
+             shadow-2xl shadow-slate-300
              hover:backdrop-blur-md
              hover:border hover:border-white/10">
       <Link href={`/account/${id}`}>

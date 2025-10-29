@@ -60,7 +60,7 @@ const Header = async () => {
               />
             </>
           ) : (
-            <SignInButton forceRedirectUrl="/dashboard">
+            <SignInButton afterSignInUrl="/dashboard" afterSignUpUrl="/dashboard">
               <Button className="cursor-pointer" variant="outline">
                 Login
               </Button>

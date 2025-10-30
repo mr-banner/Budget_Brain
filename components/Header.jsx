@@ -14,7 +14,7 @@ const Header = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    const authRoutes = ["/sign-in", "/sign-up"];
+    const authRoutes = ["/","/sign-in", "/sign-up"];
 
     if (isSignedIn && authRoutes.includes(pathname)) {
       router.replace("/dashboard");

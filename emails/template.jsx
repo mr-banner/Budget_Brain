@@ -242,7 +242,7 @@ export default function Email({
                   cursor: "pointer",
                   textDecoration: "none",
                 }}
-                href="http://localhost:3000/dashboard"
+                href="https://budget-brain-mauve.vercel.app/dashboard"
               >
                 View Detailed Report
               </Button>

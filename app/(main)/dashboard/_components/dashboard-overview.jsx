@@ -84,7 +84,7 @@ const CustomizedLabel = ({
         textAnchor={textAnchor}
         fill="#333"
         dominantBaseline="central"
-        className="text-xs"
+        className="sm:text-xs text-[8px]"
       >
         {`${name}: ₹${value.toFixed(2)}`}
       </text>

@@ -6,17 +6,20 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { Button } from "./ui/button";
 import { LayoutDashboard, PenBox } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Header = () => {
   const { isSignedIn } = useUser();
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (isSignedIn) {
-      router.push("/dashboard");
+    const authRoutes = ["/sign-in", "/sign-up"];
+
+    if (isSignedIn && authRoutes.includes(pathname)) {
+      router.replace("/dashboard");
     }
-  }, [isSignedIn, router]);
+  }, [isSignedIn, pathname]);
 
   return (
     <div className="fixed top-0 w-full bg-white/20 backdrop-blur-3xl z-50 shadow-md shadow-slate-300/80">
@@ -54,7 +57,9 @@ const Header = () => {
               <UserButton />
             </>
           ) : (
-            <SignInButton afterSignInUrl="/dashboard" afterSignUpUrl="/dashboard">
+            <SignInButton
+              forceRedirectUrl="/dashboard"
+            >
               <Button className="cursor-pointer" variant="outline">
                 Login
               </Button>

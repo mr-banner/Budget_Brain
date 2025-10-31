@@ -165,7 +165,7 @@ const TransactionTable = ({ transactions }) => {
     setSelectedIds((prev) =>
       prev.length === paginatedTransaction.length
         ? []
-        : paginatedTransactionx.map((t) => t.id)
+        : paginatedTransaction.map((t) => t.id)
     );
   };
 

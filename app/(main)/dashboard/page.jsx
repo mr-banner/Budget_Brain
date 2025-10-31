@@ -15,7 +15,7 @@ export default async function DashBoardPage() {
   let budgetData = null;
   if (defaultAccount) {
     budgetData = await getCurrentBudget(defaultAccount.id);
-  }
+  }  
 
   const transactions = await getDashBoardData()
 

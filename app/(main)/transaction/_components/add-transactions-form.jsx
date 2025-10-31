@@ -1,5 +1,5 @@
 "use client";
-import { addTransaction, updateTransaction } from "@/actions/transaction";
+import { createTransaction, updateTransaction} from "@/actions/transaction";
 import { transactionSchema } from "@/app/lib/schema";
 import CreateAccountDrawer from "@/components/create-account-drawer";
 import { Button } from "@/components/ui/button";
@@ -76,7 +76,7 @@ const AddTransactionForm = ({
     loading: transactionLoading,
     fn: transactionFn,
     data: transactionResult,
-  } = useFetch( editMode ? updateTransaction : addTransaction);
+  } = useFetch( editMode ? updateTransaction : createTransaction);
 
   const onSubmit = async (data) => {
     const formData = {

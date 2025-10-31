@@ -23,7 +23,7 @@ export function BudgetProgress({ initialBudget, currentExpenses }) {
     initialBudget?.amount?.toString() || ""
   );
 
-
+  
 
   const {
     loading: isLoading,

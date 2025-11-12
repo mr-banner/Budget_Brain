@@ -9,6 +9,8 @@ import { checkUser } from "@/lib/checkUser";
 const Header = async() => {
   await checkUser();
 
+  const userId = await checkUser();
+  
   return (
     <div className="fixed top-0 w-full bg-white/20 backdrop-blur-3xl z-50 shadow-md shadow-slate-300/80">
       <nav className="container mx-auto px-7 md:px-15 py-4 flex items-center justify-between">
@@ -23,7 +25,8 @@ const Header = async() => {
         </Link>
 
         <div className="flex items-center space-x-4">
-          <SignedIn>
+          {userId &&
+          <>
             <Link href="/dashboard">
                 <Button
                   className="cursor-pointer bg-transparent hover:bg-white hover:shadow-[#d5caff] hover:shadow-xl/80 transition-all duration-500 ease-in-out hover:border-[#7f5efd] hover:text-[#7f5efd]"
@@ -39,7 +42,8 @@ const Header = async() => {
                   <span className="hidden md:inline">Transaction</span>
                 </Button>
             </a>
-          </SignedIn>
+            </>
+          }
           <SignedOut>
             <SignInButton forceRedirectUrl="/dashboard">
               <Button variant="outline">Login</Button>

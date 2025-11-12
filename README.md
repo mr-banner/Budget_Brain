@@ -39,6 +39,7 @@ Others: Next Themes, Sonner (toast notifications)
 
 1️⃣ Clone the Repository
 git clone https://github.com/mr-banner/Budget_Brain.git
+
 cd Budget_Brain
 
 2️⃣ Install Dependencies
